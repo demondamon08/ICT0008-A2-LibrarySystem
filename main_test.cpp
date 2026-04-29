@@ -1,3 +1,5 @@
+// g++ -std=c++17 -o main_test Author.cpp Book.cpp Sort.cpp main_test.cpp
+
 #include <iostream>
 #include "Author.h"
 #include "Book.h"
