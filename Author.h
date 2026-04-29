@@ -10,19 +10,13 @@ private:
     string lastName;
 
 public:
-    Author() {
-        firstName = "";
-        lastName = "";
-    }
+    Author();
+    Author(string fName, string lName);
 
-    Author(string fName, string lName) {
-        firstName = fName;
-        lastName = lName;
-    }
-
-    string getFullName() const {
-        return firstName + " " + lastName;
-    }
+    void setAuthorDetails(string fName, string lName);
+    string getFirstName() const;
+    string getLastName() const;
+    string getFullName() const;
 };
 
 #endif

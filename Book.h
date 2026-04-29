@@ -1,62 +1,42 @@
 #ifndef BOOK_H
 #define BOOK_H
 
-#include <iostream>
 #include <string>
-#include <vector>
 #include "Author.h"
 using namespace std;
 
 class Book {
 private:
     string title;
-    string ISBN;
+    string isbn;
     bool availability;
-    vector<Author> authors;
+    string dateAdd;
+    Author authors[2];
+    int authorCount;
+
+    bool valid;
+    string errorMessage;
+
+    bool isValidISBN(string i) const;
 
 public:
-    Book() {
-        title = "";
-        ISBN = "";
-        availability = true;
-    }
+    Book();
+    Book(string t, string i, bool avail, string d, Author a[], int count);
 
-    void setBookDetails(string bookTitle, string bookISBN, bool status, vector<Author> bookAuthors) {
-        title = bookTitle;
-        ISBN = bookISBN;
-        availability = status;
-        authors = bookAuthors;
-    }
+    void setBookDetails(string t, string i, bool avail, string d, Author a[], int count);
 
-    virtual void displayBookDetails() const {
-        cout << "Title: " << title << endl;
-        cout << "Author(s): ";
-        for (size_t i = 0; i < authors.size(); i++) {
-            cout << authors[i].getFullName();
-            if (i < authors.size() - 1) cout << ", ";
-        }
-        cout << endl;
-        cout << "ISBN: " << ISBN << endl;
-        cout << "Availability: " << (availability ? "Available" : "Borrowed") << endl;
-    }
+    string getTitle() const;
+    string getISBN() const;
+    bool getAvailability() const;
+    string getDateAdd() const;
+    int getAuthorCount() const;
+    Author getAuthor(int index) const;
+    bool isValid() const;
+    string getErrorMessage() const;
 
-    bool borrowBook() {
-        if (availability) {
-            availability = false;
-            return true;
-        }
-        return false;
-    }
-
-    void returnBook() {
-        availability = true;
-    }
-
-    string getTitle() const { return title; }
-    string getISBN() const { return ISBN; }
-    bool isAvailable() const { return availability; }
-
-    virtual ~Book() {}
+    void displayBookDetails() const;
+    bool borrowBook();
+    void returnBook();
 };
 
 #endif
