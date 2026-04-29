@@ -34,9 +34,10 @@ public:
     bool isValid() const;
     string getErrorMessage() const;
 
-    void displayBookDetails() const;
+    virtual void displayBookDetails() const;
     bool borrowBook();
     void returnBook();
+    virtual ~Book() {}
 };
 
 #endif
